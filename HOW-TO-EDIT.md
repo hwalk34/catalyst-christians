@@ -36,22 +36,30 @@ limit**, so if an episode goes viral the site won't go down or bill us.
 
 ## One-time setup (about 30 minutes, once)
 
-### 1. Put the site files on GitHub
-Go to **github.com** → free account → **New repository** → name it
-`catalyst-christians` → keep it Public → **Create**.
+### 1. Put the site files on GitHub ✅ DONE
+The repo is live at **https://github.com/hwalk34/catalyst-christians**
 
-On the new repo page click **uploading an existing file**, then drag in
-everything from the `catalyst-christians` folder (index.html, bible.html,
-donate.html, and the css and js folders). Click **Commit changes**.
-
-Then add each other: **Settings → Collaborators → Add people**. Now we can both edit.
+To add your co-host so you can both edit: on that page go to
+**Settings → Collaborators → Add people** and enter their GitHub username.
 
 ### 2. Connect GitHub to Cloudflare Pages
-Go to **dash.cloudflare.com** → free account → **Workers & Pages → Create →
-Pages → Connect to Git** → pick the `catalyst-christians` repo → **Save and Deploy**.
+Go to **dash.cloudflare.com** → make a free account →
+**Workers & Pages** → **Create application** → **Pages** tab →
+**Connect to Git** → authorize GitHub → pick `catalyst-christians` →
+**Install & Authorize** → **Begin setup**.
 
-Leave the build settings blank/empty — our site is plain HTML, there's nothing
-to build.
+On the "Set up builds and deployments" screen:
+
+| Setting | What to enter |
+|---|---|
+| Project name | `catalyst-christians` (this becomes the web address) |
+| Production branch | `main` |
+| Framework preset | **None** |
+| Build command | **leave completely blank** |
+| Build output directory | `/` |
+
+Then **Save and Deploy**. Leaving the build command blank is correct — our site
+is plain HTML, so there's nothing to compile.
 
 **Done — the site is live** at `catalyst-christians.pages.dev`, with HTTPS, on
 Cloudflare's worldwide network. From now on it updates itself whenever we edit.

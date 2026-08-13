@@ -1,0 +1,23 @@
+{
+  // Long lines of text wrap instead of running off the screen
+  "editor.wordWrap": "on",
+
+  // Keeps files tidy automatically
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // Show whitespace only where it matters
+  "editor.renderWhitespace": "trailing",
+
+  // Live Server: opens the site at http://127.0.0.1:5500 and
+  // auto-refreshes the browser every time you save a file
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.donotShowInfoMsg": true,
+
+  // Don't clutter the file list with these
+  "files.exclude": {
+    "**/.git": true,
+    "**/Thumbs.db": true
+  }
+}

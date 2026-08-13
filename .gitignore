@@ -3,8 +3,10 @@ Thumbs.db
 desktop.ini
 .DS_Store
 
-# Editor settings
-.vscode/
+# Editor settings — share our project setup, ignore personal tweaks
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 
 # Logs and temp files

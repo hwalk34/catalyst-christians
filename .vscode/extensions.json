@@ -1,0 +1,6 @@
+{
+  // VS Code will suggest these to anyone who opens this project.
+  "recommendations": [
+    "ritwickdey.LiveServer"
+  ]
+}
