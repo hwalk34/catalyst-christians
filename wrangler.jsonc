@@ -1,0 +1,10 @@
+{
+  // Tells Cloudflare how to publish this site.
+  // Our site is plain HTML/CSS/JS, so there is nothing to build —
+  // Cloudflare just serves the files in this folder as-is.
+  "name": "catalyst-christians",
+  "compatibility_date": "2026-08-13",
+  "assets": {
+    "directory": "."
+  }
+}
