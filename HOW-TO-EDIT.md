@@ -42,11 +42,21 @@ The repo is live at **https://github.com/hwalk34/catalyst-christians**
 To add your co-host so you can both edit: on that page go to
 **Settings → Collaborators → Add people** and enter their GitHub username.
 
-### 2. Connect GitHub to Cloudflare Pages
+### 2. Connect GitHub to Cloudflare Pages ✅ DONE
+**Live at: https://catalyst-christians.pages.dev**
+
+*(Original instructions kept below for reference.)*
+
 Go to **dash.cloudflare.com** → make a free account →
 **Workers & Pages** → **Create application** → **Pages** tab →
 **Connect to Git** → authorize GitHub → pick `catalyst-christians` →
 **Install & Authorize** → **Begin setup**.
+
+> ⚠️ Cloudflare has two similar flows. If the screen says *"Configure your
+> **Worker** project"* and shows a **Deploy command** like `npx wrangler deploy`,
+> that's the wrong one — back out and look for the **Pages** tab. The correct
+> screen is titled **"Set up builds and deployments"** and shows
+> *"Your project will be deployed to ....pages.dev"*.
 
 On the "Set up builds and deployments" screen:
 
@@ -79,12 +89,47 @@ certificate renews itself forever. The old `.pages.dev` address keeps working to
 
 ## How to actually edit the site (the everyday part)
 
+There are two ways. Use VS Code at your desk; use GitHub in a browser when
+you're away from your computer.
+
+### Option A — VS Code (the main way)
+
+**Opening the project:** open VS Code → **File → Open Folder** →
+`Documents\catalyst-christians`. Or from any terminal, type `code .` while in
+that folder.
+
+**Previewing your changes:** right-click `index.html` in the file list and choose
+**Open with Live Server**. The site opens in your browser and refreshes itself
+every time you hit save. Leave it running while you work.
+
+**Publishing your changes** — the whole loop is three clicks:
+
+1. Click the **Source Control** icon in the left bar (the branching-lines icon),
+   or press `Ctrl+Shift+G`. Your changed files are listed there.
+2. Type a short message in the box at the top saying what you changed —
+   e.g. "Add real PayPal link" or "Update about page".
+3. Click **Commit**, then click **Sync Changes**.
+
+That's it. "Commit" saves the change with your note; "Sync Changes" sends it to
+GitHub and pulls down anything your co-host changed. About 30 seconds later
+Cloudflare has rebuilt the live site.
+
+If VS Code asks "Would you like to stage all your changes?", say **Yes** — that
+just means "include everything I edited."
+
+**Always click Sync Changes before you start editing**, too. That pulls down your
+co-host's work so you're not both editing an old copy.
+
+### Option B — GitHub in a browser (from anywhere)
+
 Go to the repo on **github.com**, click the file you want to change (e.g.
 `index.html`), click the **pencil icon**, make your edit, then click
 **Commit changes** at the bottom.
 
-That's it. Cloudflare notices the change and the live site updates in about
-30 seconds. This works from a phone browser too.
+Works from a phone. Cloudflare updates the live site the same way.
+
+**One rule if you use both:** after editing on github.com, click **Sync Changes**
+in VS Code before editing there, so your computer has the newer version.
 
 **Why this instead of a fancy admin panel:** it's free, it never breaks, it keeps
 a full history of every change, and it lets us undo any mistake. Admin-panel
