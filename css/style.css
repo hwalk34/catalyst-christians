@@ -1,0 +1,380 @@
+/* ============================================
+   Catalyst Christians — site styles
+   Colors: deep navy, warm gold, soft cream
+   ============================================ */
+
+:root {
+  --navy: #16233f;        /* deep navy — headers, footer */
+  --navy-2: #1f3157;      /* lighter navy — gradients */
+  --navy-3: #2a4373;      /* lightest navy — gradient end */
+  --gold: #c99a3c;        /* warm gold — accents, buttons */
+  --gold-light: #e3b95f;  /* light gold — hovers, highlights */
+  --cream: #faf7f0;       /* soft cream — page background */
+  --white: #ffffff;
+  --ink: #2a3342;         /* main text color */
+  --muted: #6b7280;       /* secondary text */
+  --line: #e5dfd2;        /* subtle borders */
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(22, 35, 63, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+h2 { font-size: 2rem; margin: 0 0 0.75rem; font-weight: 600; }
+
+a { color: var(--gold); }
+
+/* ---------- Header & navigation ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--navy);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+}
+
+.header-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+}
+
+.brand svg { flex: none; }
+
+.brand-name {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+}
+
+.brand-tag {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--gold-light);
+}
+
+nav.tabs {
+  margin-left: auto;
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+nav.tabs a {
+  color: #cdd6e6;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav.tabs a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+nav.tabs a.active {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
+  color: var(--cream);
+  text-align: center;
+  padding: 4.5rem 1.25rem 5.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  color: var(--cream);
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 .gold { color: var(--gold-light); }
+
+.hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #d9e0ee;
+  font-size: 1.12rem;
+}
+
+.cta-row {
+  margin-top: 2.25rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Smaller hero used on inner pages */
+.hero.hero-small { padding: 2.75rem 1.25rem 3.5rem; }
+.hero.hero-small h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.98rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { background: var(--gold-light); }
+
+.btn-outline { border-color: rgba(255, 255, 255, 0.5); color: var(--cream); }
+.btn-outline:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+.btn-navy { background: var(--navy); color: var(--cream); }
+.btn-navy:hover { background: var(--navy-2); }
+
+/* ---------- Layout & cards ---------- */
+
+main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+.section { margin-top: 2.5rem; }
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.25rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.listen-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+/* ---------- Verse of the Day card ---------- */
+
+.verse-card {
+  text-align: center;
+  padding: 2.75rem 2rem;
+  margin-top: -3.25rem;   /* lifts the card up into the hero */
+  position: relative;
+  border-top: 4px solid var(--gold);
+}
+
+.verse-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--navy);
+  margin: 0;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.verse-ref {
+  margin: 1.1rem 0 0;
+  color: var(--gold);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+}
+
+.verse-translation {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ---------- Bible reader ---------- */
+
+.reader-controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.reader-controls label {
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.reader-controls select {
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--white);
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.reader-controls select:focus,
+.chapter-nav button:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.chapter-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.chapter-nav button {
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--navy);
+  color: var(--cream);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chapter-nav button:hover { background: var(--navy-2); }
+.chapter-nav button:disabled { opacity: 0.4; cursor: default; }
+
+#chapterHeading {
+  margin: 1.75rem 0 0.25rem;
+  font-size: 1.9rem;
+}
+
+#chapterTranslation {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+}
+
+#chapterText {
+  font-size: 1.08rem;
+  line-height: 1.9;
+}
+
+#chapterText .status { color: var(--muted); font-style: italic; }
+#chapterText .error { color: #a33a3a; }
+
+.verse-num {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 0.72em;
+  vertical-align: super;
+  margin-right: 0.2rem;
+  user-select: none;
+}
+
+/* ---------- Donate page ---------- */
+
+.give-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.give-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  text-align: center;
+  border-top: 4px solid var(--gold);
+}
+
+.give-card h3 { margin: 0 0 0.4rem; font-size: 1.5rem; }
+.give-card p { color: var(--muted); font-size: 0.95rem; margin: 0 0 1.25rem; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--navy);
+  color: #b9c3d6;
+  text-align: center;
+  padding: 2.75rem 1.25rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.site-footer a { color: var(--gold-light); }
+
+.footer-verse {
+  color: var(--cream);
+  font-size: 1.15rem;
+  max-width: 680px;
+  margin: 0 auto 1rem;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 560px) {
+  .header-inner { justify-content: center; }
+  nav.tabs { margin-left: 0; }
+  .card { padding: 1.5rem; }
+  .chapter-nav { margin-left: 0; width: 100%; }
+  .chapter-nav button { flex: 1; }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalyst Christians Ministries — Faith That Moves</title>
+  <meta name="description" content="Catalyst Christians Ministries is a podcast about real faith in real life. Listen in, read the Word, and grow with us.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='17' fill='%2316233f'/%3E%3Cpath d='M17 7v20M10 14h14' stroke='%23e3b95f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <svg width="36" height="36" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="16" fill="none" stroke="#c99a3c" stroke-width="2"/>
+          <path d="M17 8v18M11 14h12" stroke="#e3b95f" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>
+          <span class="brand-name">Catalyst Christians Ministries</span>
+          <span class="brand-tag">A Podcast of Faith</span>
+        </span>
+      </a>
+      <nav class="tabs" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="bible.html">Bible</a>
+        <a href="donate.html">Give</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Faith that <span class="gold">moves.</span></h1>
+    <p>Two friends, one mission: honest conversations about following Jesus in everyday life. New episodes coming soon.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="#listen">Listen to the Podcast</a>
+      <a class="btn btn-outline" href="bible.html">Read the Bible</a>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- Verse of the Day (filled in automatically by js/verse.js) -->
+    <section class="card verse-card" aria-live="polite">
+      <p class="eyebrow">Verse of the Day</p>
+      <blockquote id="verseText" class="verse-text">Loading today&rsquo;s verse&hellip;</blockquote>
+      <p id="verseRef" class="verse-ref"></p>
+      <p id="verseTranslation" class="verse-translation"></p>
+    </section>
+
+    <section class="section" id="about">
+      <div class="card">
+        <p class="eyebrow">About the Show</p>
+        <h2>Why &ldquo;Catalyst&rdquo;?</h2>
+        <p>A catalyst is something that sparks change. That&rsquo;s our prayer for this podcast &mdash; that every conversation would spark real change in how we live, love, and follow Christ. No scripts, no pretending, just two buddies digging into Scripture and life.</p>
+        <!-- EDIT ME: replace this paragraph with your own story! -->
+      </div>
+    </section>
+
+    <section class="section" id="listen">
+      <div class="card">
+        <p class="eyebrow">Listen</p>
+        <h2>Episodes coming soon</h2>
+        <p>We&rsquo;re getting the microphones warmed up. Once the first episode drops, you&rsquo;ll be able to find us here:</p>
+        <div class="listen-row">
+          <!-- EDIT ME: when your podcast is live, replace the # with your real show links -->
+          <a class="btn btn-navy" href="#">Spotify</a>
+          <a class="btn btn-navy" href="#">Apple Podcasts</a>
+          <a class="btn btn-navy" href="#">YouTube</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-verse serif">&ldquo;Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.&rdquo; &mdash; Matthew 5:16 (KJV)</p>
+    <p>&copy; <span id="year"></span> Catalyst Christians Ministries. Scripture text provided by <a href="https://bible-api.com">bible-api.com</a> using public-domain translations.</p>
+  </footer>
+
+  <script src="js/verse.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

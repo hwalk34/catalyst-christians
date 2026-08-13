@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read the Bible — Catalyst Christians Ministries</title>
+  <meta name="description" content="Read the Bible online in public-domain translations: World English Bible, King James Version, and American Standard Version.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='17' fill='%2316233f'/%3E%3Cpath d='M17 7v20M10 14h14' stroke='%23e3b95f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <svg width="36" height="36" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="16" fill="none" stroke="#c99a3c" stroke-width="2"/>
+          <path d="M17 8v18M11 14h12" stroke="#e3b95f" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>
+          <span class="brand-name">Catalyst Christians Ministries</span>
+          <span class="brand-tag">A Podcast of Faith</span>
+        </span>
+      </a>
+      <nav class="tabs" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="bible.html" class="active">Bible</a>
+        <a href="donate.html">Give</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero hero-small">
+    <h1>Read the <span class="gold">Word</span></h1>
+    <p>Freely given, freely shared &mdash; every translation here is in the public domain.</p>
+  </section>
+
+  <main>
+    <section class="card section" style="margin-top:-2.5rem; position:relative;">
+
+      <div class="reader-controls">
+        <label for="bookSelect">Book</label>
+        <select id="bookSelect" aria-label="Choose a book of the Bible"></select>
+
+        <label for="chapterSelect">Chapter</label>
+        <select id="chapterSelect" aria-label="Choose a chapter"></select>
+
+        <label for="translationSelect">Version</label>
+        <select id="translationSelect" aria-label="Choose a translation">
+          <option value="web">World English Bible</option>
+          <option value="kjv">King James Version</option>
+          <option value="asv">American Standard Version</option>
+        </select>
+
+        <div class="chapter-nav">
+          <button id="prevBtn" type="button">&larr; Previous</button>
+          <button id="nextBtn" type="button">Next &rarr;</button>
+        </div>
+      </div>
+
+      <h2 id="chapterHeading"></h2>
+      <p id="chapterTranslation"></p>
+      <div id="chapterText"><p class="status">Loading&hellip;</p></div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-verse serif">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo; &mdash; Psalm 119:105 (KJV)</p>
+    <p>&copy; <span id="year"></span> Catalyst Christians Ministries. Scripture text provided by <a href="https://bible-api.com">bible-api.com</a> using public-domain translations.</p>
+  </footer>
+
+  <script src="js/bible.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
