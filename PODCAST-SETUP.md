@@ -146,17 +146,70 @@ follow automatically.
 
 ---
 
-## Steps for Option A (recommended)
+## Steps for Option A (recommended) — Spotify for Creators
 
-1. Sign up free at [creators.spotify.com](https://creators.spotify.com).
-2. Create the show: name, description, cover art, category
-   (Religion & Spirituality > Christianity).
-3. Upload episode one and publish. It appears on Spotify automatically.
-4. Get your feed address: **Settings → Availability → RSS Distribution**.
-5. Submit that address to Apple, YouTube, and Amazon using the steps in
-   "Submit to the platforms" below. One time only.
-6. Grab their multi-episode embed player and paste it into the Listen section of
-   `index.html` so the website updates itself from then on.
+### Step 0: Have these ready before you start
+
+The signup wizard asks for all of this, so gather it first:
+
+| What | Details |
+|---|---|
+| Show name | Catalyst Christians Ministries |
+| Description | 2-4 sentences. Draft is in `feed.xml` if you want to reuse it. |
+| Creator name | Both your names, or "Catalyst Christians Ministries" |
+| Category | Religion & Spirituality (subcategory: Christianity) |
+| Language | English |
+| Cover art | Square, **3000x3000 px** ideal (1400x1400 minimum), JPEG or PNG, RGB, **under 512 KB**, no transparency |
+| Email | A personal address you'll always control, with 2FA on |
+| Episode 1 | MP3, **128-192 kbps**. Required before the show goes live. |
+
+**Cover art tip:** design it readable at *thumbnail* size — in every podcast app
+it shows up about the size of a postage stamp. Big text, high contrast, few
+words. [Canva](https://canva.com) has free podcast cover templates at the right
+dimensions.
+
+### Step 1: Sign up
+Go to **[creators.spotify.com](https://creators.spotify.com)** and sign in with a
+Spotify account. A free listener account works — you don't need Premium. If you
+don't have one, create it first.
+
+*(Old links say `podcasters.spotify.com`; that now redirects here.)*
+
+### Step 2: Create the show
+Click **"I want to start a podcast"** (or **Create a podcast**). Fill in the
+name, description, creator name, category, and language from Step 0, then upload
+your cover art.
+
+### Step 3: Confirm your email
+Spotify sends a verification email. Click **"Confirm your email"** in it. The
+show can't go live until you do.
+
+### Step 4: Upload episode one
+From the dashboard, click **Publish an episode** → **Select a file** → choose
+your MP3 (or drag it in). Add the episode title and description, then publish.
+
+Spotify recommends mastering audio to around **-14 LUFS** — that's just a
+loudness target so your show isn't noticeably quieter or louder than other
+podcasts. Audacity can do this under **Effect → Volume and Compression →
+Loudness Normalization**. Don't lose sleep over it for episode one.
+
+### Step 5: Grab your RSS feed address
+In the dashboard: **Settings → Availability → RSS Distribution**. Copy that URL.
+
+This is the address every *other* platform needs. Spotify itself is already done
+at this point — your show is live there automatically.
+
+### Step 6: Submit that feed everywhere else (one time only)
+See "Submit to the platforms" below for Apple, YouTube, and Amazon. You never
+resubmit; they re-read the feed on their own from then on.
+
+### Step 7: Put the player on the website
+In your Spotify dashboard, find the **embed player** for the show and copy the
+embed code. Paste it into the Listen section of `index.html`, replacing the
+placeholder buttons.
+
+Use the **show/multi-episode** player, not a single-episode one, so every future
+episode appears on the site with no work from you.
 
 ---
 
