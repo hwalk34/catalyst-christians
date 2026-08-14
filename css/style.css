@@ -212,6 +212,22 @@ main {
   margin-top: 1.25rem;
 }
 
+/* ---------- Mission statement ---------- */
+
+.mission-card { border-left: 4px solid var(--gold); }
+
+.mission-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--purple);
+  margin: 0.75rem 0 0;
+  max-width: 760px;
+}
+
+.mission-text sup { font-size: 0.6em; }
+
 /* ---------- Verse of the Day card ---------- */
 
 .verse-card {
