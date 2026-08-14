@@ -56,12 +56,28 @@ it's already written and validated. Once pushed, it lives at
 `https://catalyst-christians.pages.dev/feed.xml` — that's the address you'd
 hand to Apple and Spotify.
 
-**The catch: audio files can't go in this repo.** Cloudflare Pages caps files at
-**25 MB**, and a 45-minute episode is 40-60 MB. Audio needs its own home.
+**The catch: audio files can't go in this repo, and Cloudflare is a bad home for
+them.** Two separate problems, both verified:
 
-**The fix: Cloudflare R2.** Same account we already use, and its free tier is
-10 GB of storage with **zero bandwidth charges, ever**. At ~45 MB per episode
-that's over 200 episodes free, and no traffic spike can ever generate a bill.
+1. **File size.** Cloudflare Pages caps files at **25 MB**. A 45-minute episode
+   is 40-60 MB. It simply won't upload.
+2. **Byte-range requests.** This is the important one. Podcast apps need to grab
+   *pieces* of an audio file so listeners can skip ahead without downloading the
+   whole episode. Apple **requires** the audio host to support this. We tested
+   Cloudflare Pages directly: it ignores range requests entirely (returns the
+   whole file with a 200 instead of a partial 206, and sends no
+   `Accept-Ranges` header). Cloudflare R2 has long-standing community reports of
+   the same trouble.
+
+On top of that, R2's free public address (`something.r2.dev`) is **explicitly not
+meant for production** — Cloudflare rate-limits it and throttles bandwidth,
+returning `429 Too Many Requests` under load. Fixing that requires a paid custom
+domain, so the "totally free" version of this plan isn't actually reliable.
+
+**What this means:** serving podcast *audio* correctly is a genuinely fiddly
+technical job. The feed itself is easy; the audio delivery is not. Use a real
+podcast host for the audio (see Option A) even if you love the idea of owning
+the feed.
 
 ---
 
@@ -69,23 +85,40 @@ that's over 200 episodes free, and no traffic spike can ever generate a bill.
 
 |  | Option A (Spotify host) | Option B (own feed) |
 |---|---|---|
-| Cost | Free | Free |
-| Setup effort | ~10 min | ~30 min one-time |
-| Per episode | Upload, click publish | Upload MP3, paste 8 lines, push |
-| Storage cap | None | 10 GB (~200 episodes) |
+| Cost | Free | Free feed, but audio hosting is the problem |
+| Setup effort | ~10 min | ~30 min plus troubleshooting |
+| Per episode | Upload, click publish | Upload MP3, paste 8 lines, validate, push |
+| Streaming/skip-ahead works | Guaranteed | Depends entirely on your audio host |
+| Feed always valid XML | Guaranteed | Your responsibility every time |
 | Who controls it | Spotify | You, entirely |
 | Can it be taken down? | Yes, by them | No |
 | Analytics | Built in | Apple + Spotify dashboards only |
 
-**About analytics:** this is a smaller difference than it looks. Even with your
-own feed, Apple Podcasts Connect and Spotify for Podcasters both give you full
-listener stats for your show. You mainly lose the single combined dashboard.
+**About analytics:** smaller difference than it looks. Even with your own feed,
+Apple Podcasts Connect and Spotify for Podcasters both give you full listener
+stats. You mainly lose the single combined dashboard.
 
-**Honest recommendation:** if you enjoy the building part and want to truly own
-the show, **Option B**. The feed is already written, the per-episode work is
-about five minutes, and nobody can take your podcast down or start charging you.
-If you'd rather never think about XML again, Option A is a completely respectable
-choice and you can always move later.
+## Recommendation: Option A, for technical reasons
+
+**Use a real podcast host.** Not because self-hosting is beneath you, but because
+the hard part isn't the feed — it's serving audio correctly. A podcast host
+handles byte-range requests, HTTP HEAD, accurate file sizes, and consistent
+encoding, because that's literally their whole job. Get any of those wrong and
+episodes fail to scrub, stall mid-playback, or get rejected by Apple, with
+error messages that tell you nothing useful.
+
+The second reason is blast radius. A hand-edited feed means one mistyped
+character takes your show offline on **every platform at once**, and you may not
+notice for days.
+
+**Option B's advantages are real but they're about ownership, not reliability:**
+nobody can delete your show, no storage caps, no dependence on a company's whims.
+Those matter. They're just not technical advantages.
+
+**A sensible middle ground** if you want ownership later: get the show running on
+a host first, then revisit self-hosting once you have episodes out and understand
+the workflow. Moving is a solved problem (301 redirect) and your subscribers
+follow automatically.
 
 ---
 
@@ -113,14 +146,34 @@ choice and you can always move later.
 
 ---
 
-## Steps for Option B (own feed)
+## Steps for Option A (recommended)
 
-### 1. Set up audio storage on Cloudflare R2
-In the Cloudflare dashboard: **R2** → **Create bucket** → name it
-`catalyst-audio` → create. Then **Settings** → enable a **public r2.dev URL**
-(or connect a subdomain like `media.catalystchristians.org` if you buy a domain).
+1. Sign up free at [creators.spotify.com](https://creators.spotify.com).
+2. Create the show: name, description, cover art, category
+   (Religion & Spirituality > Christianity).
+3. Upload episode one and publish. It appears on Spotify automatically.
+4. Get your feed address: **Settings → Availability → RSS Distribution**.
+5. Submit that address to Apple, YouTube, and Amazon using the steps in
+   "Submit to the platforms" below. One time only.
+6. Grab their multi-episode embed player and paste it into the Listen section of
+   `index.html` so the website updates itself from then on.
 
-Upload your MP3 there and copy its public link.
+---
+
+## Steps for Option B (own feed) — only if you've chosen ownership over convenience
+
+### 1. Find audio hosting that supports byte-range requests
+**Do not use Cloudflare Pages or R2 for audio** (see the warnings above).
+Whatever you pick, verify it with this command, replacing the URL with a real
+uploaded file:
+
+```bash
+curl -sI -H "Range: bytes=0-99" https://your-host/episode-001.mp3
+```
+
+You need to see **`HTTP/… 206 Partial Content`** and an `Accept-Ranges: bytes`
+header. If you get `200` and the whole file, that host will cause playback
+problems and Apple may reject the feed.
 
 ### 2. Add the episode to the feed
 Open [EPISODE-TEMPLATE.txt](EPISODE-TEMPLATE.txt), follow the instructions, and
