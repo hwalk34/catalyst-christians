@@ -1,0 +1,61 @@
+HOW TO ADD AN EPISODE
+=====================
+
+1. Upload the MP3 to your audio storage and copy its direct link.
+2. Right-click the MP3 on your computer -> Properties -> note the
+   "Size" in BYTES (the exact number, not "42 MB").
+3. Copy everything between the two dashed lines below.
+4. Paste it into feed.xml, directly under the line that says
+   "EPISODES GO BELOW THIS LINE". Newest episode goes on top.
+5. Fill in the six values marked <-- CHANGE.
+6. Validate the feed (see PODCAST-SETUP.md), then commit and push.
+
+WHAT EACH FIELD MEANS
+---------------------
+title       The episode name listeners see.
+description What the episode is about. Plain text is safest.
+enclosure   url    = direct link to the MP3 file
+            length = file size in BYTES (must be accurate)
+            type   = audio/mpeg for MP3 files. Leave alone.
+guid        A permanently unique ID. Bump the number each episode.
+            NEVER change one after publishing.
+pubDate     Release date and time. Copy the format exactly:
+            Day, DD Mon YYYY HH:MM:SS -0600
+            (-0600 is Mountain Time; use -0500 for Central,
+             -0700 for Pacific, -0400 for Eastern in summer)
+duration    Episode length as HH:MM:SS
+episode     Episode number as a plain number.
+
+COPY EVERYTHING BETWEEN THESE LINES
+-----------------------------------------------------------
+    <item>
+      <title>Episode 1: Why We're Doing This</title>
+      <description>In our very first episode we introduce ourselves and talk about why we felt called to start Catalyst Christians Ministries.</description>
+      <enclosure
+        url="https://YOUR-AUDIO-LINK-HERE/episode-001.mp3"
+        length="43200000"
+        type="audio/mpeg"/>
+      <guid isPermaLink="false">catalyst-christians-episode-001</guid>
+      <pubDate>Tue, 01 Sep 2026 08:00:00 -0600</pubDate>
+      <itunes:duration>00:42:15</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+-----------------------------------------------------------
+
+CHANGE THESE SIX THINGS EACH TIME
+  1. title
+  2. description
+  3. enclosure url
+  4. enclosure length (bytes)
+  5. guid (bump 001 to 002, etc.)
+  6. pubDate, duration, and episode number
+
+A NOTE ON SPECIAL CHARACTERS
+XML treats these as code, so write them the long way in titles
+and descriptions:
+      &   becomes  &amp;
+      <   becomes  &lt;
+      >   becomes  &gt;
+So "Faith & Doubt" must be typed as "Faith &amp; Doubt".
+This is the single most common way a feed breaks.

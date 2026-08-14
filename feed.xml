@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+  CATALYST CHRISTIANS MINISTRIES : PODCAST RSS FEED
+  ============================================================
+
+  This one file IS our podcast as far as Apple, Spotify, and
+  every other app is concerned. They read it to find out our
+  show name, artwork, and where each episode's audio lives.
+
+  Once live, its address is:
+      https://catalyst-christians.pages.dev/feed.xml
+
+  BEFORE SUBMITTING ANYWHERE, fill in every "EDIT ME" below.
+
+  Two rules that will save you pain:
+    1. This is XML. One missing bracket breaks the feed for
+       every app at once. Always validate before publishing
+       (free validator link is in PODCAST-SETUP.md).
+    2. Never change a guid once an episode is published.
+       That is how apps tell episodes apart. Changing it makes
+       the episode re-download for everyone as if it were new.
+
+  To add an episode, copy the block from EPISODE-TEMPLATE.txt
+  and paste it where marked below.
+  ============================================================
+-->
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+
+    <!-- ========== SHOW INFORMATION ========== -->
+
+    <title>Catalyst Christians Ministries</title>
+
+    <!-- The address of our website -->
+    <link>https://catalyst-christians.pages.dev</link>
+
+    <!-- Points at this file itself. Leave as-is. -->
+    <atom:link href="https://catalyst-christians.pages.dev/feed.xml"
+               rel="self" type="application/rss+xml"/>
+
+    <description>Two friends having honest conversations about following Jesus in everyday life. No scripts, no pretending, just real faith, real questions, and real Scripture.</description>
+
+    <language>en-us</language>
+
+    <!-- EDIT ME: your show's public-facing name -->
+    <itunes:author>Catalyst Christians Ministries</itunes:author>
+
+    <!--
+      EDIT ME: Apple emails this address to verify you own the show.
+      Use a personal email you will always have access to.
+      You cannot claim the show without it.
+    -->
+    <itunes:owner>
+      <itunes:name>Catalyst Christians Ministries</itunes:name>
+      <itunes:email>YOUR-EMAIL-HERE@example.com</itunes:email>
+    </itunes:owner>
+
+    <!--
+      EDIT ME: cover artwork URL.
+      Square JPEG or PNG, 1400x1400 minimum (3000x3000 best),
+      RGB, no transparency, under 512 KB.
+      Save it in this folder as cover.jpg and this URL just works.
+    -->
+    <itunes:image href="https://catalyst-christians.pages.dev/cover.jpg"/>
+
+    <itunes:category text="Religion &amp; Spirituality">
+      <itunes:subcategory text="Christianity"/>
+    </itunes:category>
+
+    <!-- "false" means no explicit content. Required by Apple. -->
+    <itunes:explicit>false</itunes:explicit>
+
+    <!-- "episodic" is a normal show. Use "serial" only if order matters. -->
+    <itunes:type>episodic</itunes:type>
+
+    <copyright>Copyright 2026 Catalyst Christians Ministries</copyright>
+
+
+    <!-- ==================================================
+         EPISODES GO BELOW THIS LINE
+         Newest episode always goes FIRST.
+         Paste blocks from EPISODE-TEMPLATE.txt here.
+         Apple and Spotify both require at least one real
+         episode before they will accept the feed.
+         ================================================== -->
+
+
+  </channel>
+</rss>
